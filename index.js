@@ -1,18 +1,23 @@
 //--- Scroll Up Button Object
+
 const btnUp = {
-  element: document.querySelector(".btn-up"),
+  element: document.querySelector(".js-btn-up"),
+  MINSCROLL: 500,
+
   show() {
     this.element.hidden = false;
   },
+  
   hide() {
     this.element.hidden = true;
   },
+  
   addEventListener() {
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      scrollY > 500 ? this.show() : this.hide();
+      scrollY > this.MINSCROLL ? this.show() : this.hide();
     });
-    document.querySelector(".btn-up").onclick = () => {
+    document.querySelector(".js-btn-up").onclick = () => {
       window.scrollTo({
         top: 0,
         left: 0,
